@@ -54,8 +54,8 @@ class config():
     if args.trainset == 'CIFAR10':
         save_model_freq = 5
         image_dims = (3, 32, 32)
-        train_data_dir = "/media/D/Dataset/CIFAR10/"
-        test_data_dir = "/media/D/Dataset/CIFAR10/"
+        train_data_dir = "../media/D/Dataset/CIFAR10/"
+        test_data_dir = "../media/D/Dataset/CIFAR10/"
         batch_size = 128
         downsample = 2
         channel_number = int(args.C)
@@ -92,13 +92,13 @@ class config():
     elif args.trainset == 'DIV2K':
         save_model_freq = 100
         image_dims = (3, 256, 256)
-        base_path = "/media/D/Dataset/DIV2K/"
+        base_path = "../media/D/Dataset/DIV2K/"
         if args.testset == 'kodak':
-            test_data_dir = ["/media/D/Dataset/test/Kodak/"]
+            test_data_dir = ["../media/D/Dataset/test/Kodak/"]
         elif args.testset == 'CLIC21':
-            test_data_dir = ["/media/D/Dataset/HR_Image_dataset/clic2021/test/"]
+            test_data_dir = ["../media/D/Dataset/HR_Image_dataset/clic2021/test/"]
         elif args.testset == 'ffhq':
-            test_data_dir = ["/media/D/yangke/SwinJSCC/data/ffhq/"]
+            test_data_dir = ["/media/lab125/D1/FFHQ/"]
 
         train_data_dir = [
             base_path + '/clic2020/**', base_path + '/clic2021/train', base_path + '/clic2021/valid', base_path + '/clic2022/val', base_path + '/DIV2K_train_HR', base_path + '/DIV2K_valid_HR'
@@ -385,7 +385,7 @@ if __name__ == '__main__':
     logger.info(config.__dict__)
     torch.manual_seed(seed=config.seed)
     net = SwinJSCC(args, config)
-    model_path = "./checkpoint/SwinJSCC_w_SAandRA_AWGN_HRimage_cbr_psnr_snr.model"
+    model_path = "../checkpoint/SwinJSCC_w_SAandRA_AWGN_HRimage_cbr_psnr_snr.model"
     load_weights(model_path)
     net = net.cuda()
     model_params = [{'params': net.parameters(), 'lr': 0.0001}]
