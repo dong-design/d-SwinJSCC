@@ -57,3 +57,5 @@ Dataset/
 
 # binary dataset files
 **/test_batch
+
+.history/
